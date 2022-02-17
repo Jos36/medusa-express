@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useRef, useState } from "react"
 import OrderContext from "../../context/order-context"
 import PaymentForm from "./payment-form"
 // solana imports
-import wallet from "../../utils/wallet"
+import { wallet } from "../../utils/wallet"
 import { clusterApiUrl, Connection } from "@solana/web3.js"
 import { Keypair, PublicKey } from "@solana/web3.js"
 import {
