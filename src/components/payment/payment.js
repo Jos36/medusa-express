@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useRef, useState } from "react"
 import OrderContext from "../../context/order-context"
 import PaymentForm from "./payment-form"
 // solana imports
+import wallet from "../../utils/wallet"
 import { clusterApiUrl, Connection } from "@solana/web3.js"
 import { Keypair, PublicKey } from "@solana/web3.js"
 import {
@@ -15,6 +16,7 @@ import BigNumber from "bignumber.js"
 
 const Payment = () => {
   console.log(`${process.env.WALLET_ID}`)
+  console.log(wallet)
   const [priceInSol, setPriceInSol] = useState()
   const { order, completeOrder, orderStatus } = useContext(OrderContext)
   const { cart } = useContext(OrderContext)
