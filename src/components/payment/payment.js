@@ -15,6 +15,8 @@ import {
 import BigNumber from "bignumber.js"
 
 const Payment = () => {
+  const MERCHANT_WALLE = new PublicKey(`${wallet}`)
+  console.log(MERCHANT_WALLE)
   console.log(`${process.env.WALLET_ID}`)
   console.log(wallet)
   const [priceInSol, setPriceInSol] = useState()
