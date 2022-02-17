@@ -61,7 +61,9 @@ const Payment = () => {
     const price = getPrice()
     const amount = new BigNumber(`0.00000000${priceInSol}`)
     console.log(amount)
-    const MERCHANT_WALLET = new PublicKey(`${process.env.WALLET_ID}`)
+    const MERCHANT_WALLET = new PublicKey(
+      `7WUjHN6UmD8YFL5ge2NJxFyVCJ1ycKDS78Jot4QN8NHJ`
+    )
     console.log(MERCHANT_WALLET)
     const reference = new Keypair().publicKey
     const label = "Jungle Cats store"
