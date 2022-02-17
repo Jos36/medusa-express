@@ -21,19 +21,27 @@ const Payment = () => {
   const ref = useRef(null)
 
   const getPrice = () => {
-    require("axios")
-      .get(
-        `https://api.nomics.com/v1/currencies/ticker?ids=SOL&key=7417200ca32da87c2d9f71b93a78ec3fbaebb631&convert=${cart.region.currency_code.toUpperCase()}`,
-        { headers: { "Content-Type": "application/x-www-form-urlencoded" } }
-      )
-      .then(response => {
-        const price =
-          ((cart.total / 100) * (1 + cart.region.tax_rate / 100)) /
-          response.data[0].price
-        const priceNum = `${price}`.split(".").join("")
-        setPriceInSol(priceNum)
-        console.log(priceNum)
-      })
+    let headers = new Headers()
+
+    headers.append("Content-Type", "application/json")
+    headers.append("Accept", "application/json")
+    headers.append("Origin", "http://localhost:3000")
+
+    fetch(
+      `https://api.nomics.com/v1/currencies/ticker?ids=SOL&key=7417200ca32da87c2d9f71b93a78ec3fbaebb631&convert=${cart.region.currency_code.toUpperCase()}`,
+      {
+        mode: "cors",
+        method: "GET",
+        headers: headers,
+      }
+    ).then(response => {
+      const price =
+        ((cart.total / 100) * (1 + cart.region.tax_rate / 100)) /
+        response.data[0].price
+      const priceNum = `${price}`.split(".").join("")
+      setPriceInSol(priceNum)
+      console.log(priceNum)
+    })
   }
   // add the QR code to the page
   useEffect(() => {
