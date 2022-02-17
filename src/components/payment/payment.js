@@ -21,20 +21,19 @@ const Payment = () => {
   const ref = useRef(null)
 
   const getPrice = () => {
-    const Axios = require("axios")
-
-    Axios({
-      method: "get",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      url: `https://api.nomics.com/v1/currencies/ticker?ids=SOL&key=7417200ca32da87c2d9f71b93a78ec3fbaebb631&convert=${cart.region.currency_code.toUpperCase()}`,
-    }).then(response => {
-      const price =
-        ((cart.total / 100) * (1 + cart.region.tax_rate / 100)) /
-        response.data[0].price
-      const priceNum = `${price}`.split(".").join("")
-      setPriceInSol(priceNum)
-      console.log(priceNum)
-    })
+    require("axios")
+      .get(
+        `https://api.nomics.com/v1/currencies/ticker?ids=SOL&key=7417200ca32da87c2d9f71b93a78ec3fbaebb631&convert=${cart.region.currency_code.toUpperCase()}`,
+        { headers: { "Content-Type": "application/x-www-form-urlencoded" } }
+      )
+      .then(response => {
+        const price =
+          ((cart.total / 100) * (1 + cart.region.tax_rate / 100)) /
+          response.data[0].price
+        const priceNum = `${price}`.split(".").join("")
+        setPriceInSol(priceNum)
+        console.log(priceNum)
+      })
   }
   // add the QR code to the page
   useEffect(() => {
