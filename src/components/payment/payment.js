@@ -57,6 +57,8 @@ const Payment = () => {
 
     // fake data
     console.log("2. 🛍 Simulate a customer checkout \n")
+    const wallet = `${process.env.WALLET_ID}`
+    const MERCHANT_WALLET = new PublicKey(wallet)
     const price = getPrice()
     const amount = new BigNumber(`0.00000000${priceInSol}`)
     console.log(amount)
@@ -69,7 +71,7 @@ const Payment = () => {
     //   make payment url
     console.log("3. 💰 Create a payment request link \n")
     const url = encodeURL({
-      recipient: new PublicKey(`${process.env.WALLET_ID}`),
+      recipient: MERCHANT_WALLET,
       amount,
       reference,
       label,
