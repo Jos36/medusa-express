@@ -25,7 +25,7 @@ const Payment = () => {
 
     headers.append("Content-Type", "application/json")
     headers.append("Accept", "application/json")
-    headers.append("Origin", "http://localhost:3000")
+    headers.append("Origin", "https://medusa-express.vercel.app")
 
     fetch(
       `https://api.nomics.com/v1/currencies/ticker?ids=SOL&key=7417200ca32da87c2d9f71b93a78ec3fbaebb631&convert=${cart.region.currency_code.toUpperCase()}`,
