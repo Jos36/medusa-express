@@ -14,14 +14,12 @@ import {
 import BigNumber from "bignumber.js"
 
 const Payment = () => {
+  console.log(`${process.env.WALLET_ID}`)
   const [priceInSol, setPriceInSol] = useState()
   const { order, completeOrder, orderStatus } = useContext(OrderContext)
   const { cart } = useContext(OrderContext)
   const [qr, setQr] = useState(null)
   const ref = useRef(null)
-  console.log(`${process.env.WALLET_ID}`)
-  const MERCHANT_WALLET = new PublicKey(`${process.env.WALLET_ID}`)
-  console.log(MERCHANT_WALLET)
   const getPrice = () => {
     let headers = new Headers()
 
@@ -63,7 +61,8 @@ const Payment = () => {
     const price = getPrice()
     const amount = new BigNumber(`0.00000000${priceInSol}`)
     console.log(amount)
-    console.log(BigNumber(20))
+    const MERCHANT_WALLET = new PublicKey(`${process.env.WALLET_ID}`)
+    console.log(MERCHANT_WALLET)
     const reference = new Keypair().publicKey
     const label = "Jungle Cats store"
     const message = "Jungle Cats store - your order - #001234"
