@@ -19,8 +19,8 @@ const Payment = () => {
   const { cart } = useContext(OrderContext)
   const [qr, setQr] = useState(null)
   const ref = useRef(null)
-  const MERCHANT_WALLET = new PublicKey(`${process.env.WALLET_ID}`)
   console.log(`${process.env.WALLET_ID}`)
+  const MERCHANT_WALLET = new PublicKey(`${process.env.WALLET_ID}`)
   console.log(MERCHANT_WALLET)
   const getPrice = () => {
     let headers = new Headers()
