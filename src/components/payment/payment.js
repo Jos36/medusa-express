@@ -69,7 +69,7 @@ const Payment = () => {
     //   make payment url
     console.log("3. 💰 Create a payment request link \n")
     const url = encodeURL({
-      recipient: new PublicKey(process.env.WALLET_ID),
+      recipient: new PublicKey(`${process.env.WALLET_ID}`),
       amount,
       reference,
       label,
