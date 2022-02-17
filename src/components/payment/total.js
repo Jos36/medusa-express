@@ -12,18 +12,12 @@ const Total = () => {
     headers.append("Content-Type", "application/json")
     headers.append("Accept", "application/json")
     headers.append("Origin", "https://medusa-express.vercel.app")
-
-    fetch(
-      `https://api.coingecko.com/api/v3/coins/solana`
-      // {
-      //   mode: "cors",
-      //   method: "GET",
-      //   headers: headers,
-      // }
-    ).then(response => {
-      console.log(response)
-      setPrice(response.data.market_data.current_price.usd)
-    })
+    require("axios")
+      .get(`https://api.coingecko.com/api/v3/coins/solana`)
+      .then(response => {
+        console.log(response)
+        setPrice(response.data.market_data.current_price.usd)
+      })
   }
   return (
     <Flex

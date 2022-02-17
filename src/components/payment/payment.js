@@ -27,21 +27,16 @@ const Payment = () => {
     headers.append("Accept", "application/json")
     headers.append("Origin", "https://medusa-express.vercel.app")
 
-    fetch(
-      `https://api.coingecko.com/api/v3/coins/solana`
-      // {
-      //   mode: "cors",
-      //   method: "GET",
-      //   headers: headers,
-      // }
-    ).then(response => {
-      const price =
-        ((cart.total / 100) * (1 + cart.region.tax_rate / 100)) /
-        response.data.market_data.current_price.usd
-      const priceNum = `${price}`.split(".").join("")
-      setPriceInSol(priceNum)
-      console.log(priceNum)
-    })
+    require("axios")
+      .get(`https://api.coingecko.com/api/v3/coins/solana`)
+      .then(response => {
+        const price =
+          ((cart.total / 100) * (1 + cart.region.tax_rate / 100)) /
+          response.data.market_data.current_price.usd
+        const priceNum = `${price}`.split(".").join("")
+        setPriceInSol(priceNum)
+        console.log(priceNum)
+      })
   }
   // add the QR code to the page
   useEffect(() => {
