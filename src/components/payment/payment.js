@@ -15,10 +15,10 @@ import {
 import BigNumber from "bignumber.js"
 
 const Payment = () => {
-  console.log(`${process.env.MERCHANT_WALLET}`)
-  console.log(wallet)
-  const MERCHANT_WALLE = new PublicKey(process.env.MERCHANT_WALLET)
-  console.log(MERCHANT_WALLE)
+  // console.log(`${process.env.MERCHANT_WALLET}`)
+  // console.log(wallet)
+  // const MERCHANT_WALLE = new PublicKey(process.env.MERCHANT_WALLET)
+  // console.log(MERCHANT_WALLE)
   const [priceInSol, setPriceInSol] = useState()
   const { order, completeOrder, orderStatus } = useContext(OrderContext)
   const { cart } = useContext(OrderContext)
