@@ -14,15 +14,15 @@ const Total = () => {
     headers.append("Origin", "https://medusa-express.vercel.app")
 
     fetch(
-      `https://api.nomics.com/v1/currencies/ticker?ids=SOL&key=7417200ca32da87c2d9f71b93a78ec3fbaebb631&convert=${cart.region.currency_code.toUpperCase()}`,
-      {
-        mode: "cors",
-        method: "GET",
-        headers: headers,
-      }
+      `https://api.coingecko.com/api/v3/coins/solana`
+      // {
+      //   mode: "cors",
+      //   method: "GET",
+      //   headers: headers,
+      // }
     ).then(response => {
       console.log(response)
-      setPrice(response)
+      setPrice(response.data.market_data.current_price.usd)
     })
   }
   return (
@@ -79,8 +79,7 @@ const Total = () => {
           {price ? "" : getPrice()}
           {price
             ? `(${
-                ((cart.total / 100) * (1 + cart.region.tax_rate / 100)) /
-                price.data[0].price
+                ((cart.total / 100) * (1 + cart.region.tax_rate / 100)) / price
               } SOL) `
             : ""}{" "}
           {(cart.total / 100) * (1 + cart.region.tax_rate / 100)}{" "}
