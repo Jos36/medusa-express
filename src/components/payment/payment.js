@@ -19,7 +19,9 @@ const Payment = () => {
   const { cart } = useContext(OrderContext)
   const [qr, setQr] = useState(null)
   const ref = useRef(null)
-
+  const MERCHANT_WALLET = new PublicKey(`${process.env.WALLET_ID}`)
+  console.log(`${process.env.WALLET_ID}`)
+  console.log(MERCHANT_WALLET)
   const getPrice = () => {
     let headers = new Headers()
 
@@ -57,8 +59,7 @@ const Payment = () => {
 
     // fake data
     console.log("2. 🛍 Simulate a customer checkout \n")
-    const wallet = `${process.env.WALLET_ID}`
-    const MERCHANT_WALLET = new PublicKey(wallet)
+
     const price = getPrice()
     const amount = new BigNumber(`0.00000000${priceInSol}`)
     console.log(amount)
@@ -125,7 +126,7 @@ const Payment = () => {
       await validateTransactionSignature(
         connection,
         signature,
-        new PublicKey(process.env.WALLET_ID),
+        MERCHANT_WALLET,
         amount,
         undefined,
         reference
